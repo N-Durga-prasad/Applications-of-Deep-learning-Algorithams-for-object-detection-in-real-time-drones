@@ -1,0 +1,87 @@
+{% extends 'base.html'%}
+{% block contents%}
+<style>
+
+</style>
+    <div class="w3-container">
+        <h1 style="margin-left: 40%; margin-top:8%">Registration Form  </h1>
+        <form action="{% url 'Register'%}" method="post" enctype="multipart/form-data">
+            {%csrf_token %}
+        <table  style="margin-left: 40%; margin-top:2%;">
+           
+            <tr>
+                <!-- <td class="w3-black w3-xlarge w3-cursive">Name </td> -->
+                <td>
+                    <input type="text" name="name" class="w3-input w3-animated-input" placeholder="Name" autocomplete="off" pattern="[a-zA-Z]+" required>
+                </td>               
+                </tr>
+
+                <tr>
+                    <!-- <td class="w3-black w3-xlarge w3-cursive">UserName </td> -->
+                    <td >
+                        <input type="text" name="username" placeholder="UserName" class="w3-input w3-animated-input" autocomplete="off" pattern="[a-zA-Z]+" required> 
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <td class="w3-black w3-xlarge w3-cursive">PassWord </td> -->
+                    <td >
+                         <input type="password" name="password" placeholder="PassWord" class="w3-input w3-animated-input" autocomplete="off" pattern="(?=.*\d)(?=.[a-z])(?=.*[A-Z]).{8,}" required>
+                         </td>
+                </tr>
+
+                <tr>
+                    <!-- <td class="w3-black w3-xlarge w3-cursive">Mobile No</td> -->
+                    <td >
+                        <input type="tel" name="phon" placeholder="Mobile No" class="w3-input w3-animated-input" autocomplete="off" pattern="[56789][0-9]{9}" required>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <td class="w3-black w3-xlarge w3-cursive"> Mail Id</td> -->
+                    <td >
+                         <input type="text" name="mail" placeholder="Mail Id" class="w3-input w3-animated-input" autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                        </td>
+                </tr>
+                <tr>
+                    <!-- <td class="w3-black w3-xlarge w3-cursive">Locality</td> -->
+                    <td >
+                         <input type="text" name="locality" placeholder="Locality" class="w3-input w3-animated-input" autocomplete="off" pattern="[a-zA-Z]+" required>
+                        </td>
+                </tr>
+                <tr>
+                    <!-- <td class="w3-black w3-xlarge w3-cursive">Adderess </td> -->
+                    <td >
+                        <input type="text" name="address"  placeholder="Adderess" class="w3-input w3-animated-input" autocomplete="off"  required>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <td class="w3-black w3-xlarge w3-cursive">City </td>  -->
+                    <td >
+                         <input type="text" name="city" placeholder="City" class="w3-input w3-animated-input" autocomplete="off" pattern="[a-zA-Z]+" required>
+                     </td>
+                </tr>
+                <tr>
+                    <!-- <td class="w3-black w3-xlarge w3-cursive">State</td> -->
+                    <td >
+                        <input type="text" name="state" placeholder="State" class="w3-input w3-animated-input" autocomplete="off" pattern="[a-zA-Z]+" required> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                         <input type="hidden" name="status" value="waiting">
+                    </td>
+                </tr>
+                
+
+        </table>
+        <input type="submit" value="Register" class="w3-button w3-green w3-hover-white" style="margin-left:44%;">
+        <input type="reset" value="Reset" class="w3-button w3-green w3-hover-white">
+
+        {% if  messages%}
+        {% for mes in messages%}
+        <h2 style="margin-left:40%; background-color:blue; margin-right:15%; color:white;">{{mes}}</h2>
+        {% endfor %}
+        {%endif%}
+    </p>
+    </form>
+    </div>
+{% endblock %}

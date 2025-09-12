@@ -1,0 +1,18 @@
+{% extends 'User/UserHome.html'%}
+{% block contents %}
+<style>
+    .w3-container
+    {
+        margin-left: 40%;
+        margin-top: 10%;
+    }
+</style>
+<div class="w3-container">
+    <h1 style="background-color: black;color:white;margin-right:70%" class="w3-animate-top">Upload Video </h1>
+<form action="{% url 'video'%}" method="post"  enctype="multipart/form-data">
+    {% csrf_token %}
+<input type="file" placeholder="Upload video" autocomplete="off" class="w3-input w3-animate-bottom" name="file"><br>
+<input type="submit" value="Upload" class="w3-button w3-round-xlarge w3-green">
+</form>
+</div>
+{% endblock%}

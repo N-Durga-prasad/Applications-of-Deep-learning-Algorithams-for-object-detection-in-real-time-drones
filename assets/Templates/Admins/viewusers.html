@@ -1,0 +1,65 @@
+{% extends 'Admins/adminhome.html'%}
+{% block contents %}
+<style>
+    .w3-responsive
+    {
+        color: red;
+    }
+    .w3-table
+    {
+        margin-left:20%;
+        margin-top: 10%;
+        width:70%;
+    }
+    .a{
+        background-color:azure;
+        
+    }
+    .b{
+        background-color:azure;
+    }
+    
+</style>
+<div class="w3-container">
+    <div class="w3-responsive">
+        
+    <table class="w3-table w3-border-red w3-border w3-striped ">
+        <tr class="a w3-text-purple">
+            <th>Name</th>
+            <th>UserName</th>  
+            <th>Phone No</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Status</th>
+            <th>Activate</th>
+            <th>DeleteUser</th>
+        </tr>
+        {% for data in data%}
+        <tr class="b w3-text-purple w3-large">
+            <td>{{data.Name}}</td>
+            <td>{{data.User_Name}}</td>
+            <td>{{data.Mobile_No}}</td>
+            <td>{{data.City}}</td>
+            <td>{{data.State}}</td>
+            <td>{{data.Status}}</td>
+
+        
+     
+                    {% if data.Status == 'waiting' %}
+          <td><a href=" /Activateuser/?uid={{data.id}}" class="w3-button  w3-hover-blue w3-round-xxlarge" style="color:green">Activate</a>/<a href="/DeleteUser/?uid={{data.id}}" class="w3-button  w3-hover-blue w3-round-xxlarge" style="color:red;">Delete</a></td>
+         {% else %}
+           <td>Activated</td>
+        {% endif %}
+        
+    {% if data.Status == 'Activated'%}
+    
+    <td><a href="/DeleteUser/?uid={{data.id}}" class="w3-button w3-round-xxlarge   w3-hover-blue" style="color:red">Delete</a></td></tr>
+    {% endif%}
+    {% endfor%}
+    </table>
+    
+
+    
+</div>
+</div>
+{% endblock%}
